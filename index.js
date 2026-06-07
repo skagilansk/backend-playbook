@@ -184,4 +184,5 @@ const PORT = process.env.PORT || 5000;
     console.log(`\n🟢  Playbook Live server  →  http://localhost:${PORT}`);
     console.log(`    Health: http://localhost:${PORT}/health\n`);
   });
+// Trigger nodemon reload for env update
 })();

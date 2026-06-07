@@ -6,7 +6,15 @@
  * All models import mongoose directly; this file just ensures the
  * connection is established before routes try to use it.
  */
-require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env') });
+const path = require('path');
+const fs = require('fs');
+const localEnv = path.resolve(__dirname, '../.env');
+const parentEnv = path.resolve(__dirname, '../../.env');
+if (fs.existsSync(localEnv)) {
+  require('dotenv').config({ path: localEnv });
+} else {
+  require('dotenv').config({ path: parentEnv });
+}
 const mongoose = require('mongoose');
 
 let isConnected = false;
